@@ -6,11 +6,12 @@
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:47:11 by suchua            #+#    #+#             */
-/*   Updated: 2023/05/15 20:44:06 by suchua           ###   ########.fr       */
+/*   Updated: 2023/05/16 01:21:01 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat():name("NULL")
 {
@@ -53,4 +54,39 @@ int	Bureaucrat::getGrade()
 const std::string Bureaucrat::getName()
 {
 	return this->name;	
+}
+
+void	Bureaucrat::gradeDecrease()
+{
+	if (this->grade + 1 > 150)
+		throw GradeTooLowException();
+	grade++;
+}
+
+void	Bureaucrat::gradeIncrease()
+{
+	if (this->grade - 1 < 1)
+		throw GradeTooHighException();
+	grade--;
+}
+
+std::ostream&	operator<<(std::ostream& stream, Bureaucrat& b)
+{
+	stream << b.getName();
+	stream << ", bureaucrat grade ";
+	stream << b.getGrade();
+	stream << "." << std::endl;
+	return stream;
+}
+
+void	Bureaucrat::signForm(Form& form)
+{
+	if (form.getSign())
+		std::cout << "bureaucrat signed form";
+	else
+	{
+		std::cout << "bureaucrat couldn't sign form because ";
+		std::cout << this->name << "'s grade is " << this->grade;
+		std::cout << " and the grade required to sign is " << form.getGradeSign() << std::endl;
+	}
 }

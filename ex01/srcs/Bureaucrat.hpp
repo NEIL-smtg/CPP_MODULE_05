@@ -6,7 +6,7 @@
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:35:00 by suchua            #+#    #+#             */
-/*   Updated: 2023/05/15 20:14:09 by suchua           ###   ########.fr       */
+/*   Updated: 2023/05/16 01:16:33 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ class Bureaucrat
 		//increment, decrement of grade
 		void				gradeIncrease();
 		void				gradeDecrease();
+
+		//member function
+		void	signForm(Form& form);
 };
+
+std::ostream&	operator<<(std::ostream& stream, Bureaucrat& b);
 
 #endif

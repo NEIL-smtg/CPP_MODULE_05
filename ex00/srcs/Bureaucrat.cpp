@@ -6,7 +6,7 @@
 /*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:47:11 by suchua            #+#    #+#             */
-/*   Updated: 2023/05/15 20:44:06 by suchua           ###   ########.fr       */
+/*   Updated: 2023/05/16 00:37:48 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,27 @@ int	Bureaucrat::getGrade()
 const std::string Bureaucrat::getName()
 {
 	return this->name;	
+}
+
+void	Bureaucrat::gradeDecrease()
+{
+	if (this->grade + 1 > 150)
+		throw GradeTooLowException();
+	grade++;
+}
+
+void	Bureaucrat::gradeIncrease()
+{
+	if (this->grade - 1 < 1)
+		throw GradeTooHighException();
+	grade--;
+}
+
+std::ostream&	operator<<(std::ostream& stream, Bureaucrat& b)
+{
+	stream << b.getName();
+	stream << ", bureaucrat grade ";
+	stream << b.getGrade();
+	stream << "." << std::endl;
+	return stream;
 }
