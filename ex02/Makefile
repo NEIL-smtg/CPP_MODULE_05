@@ -1,5 +1,5 @@
 NAME		=	form
-FILES		=	main Bureaucrat Form
+FILES		=	main Bureaucrat AForm
 SRCS_DIR	=	srcs/
 OBJS_DIR	=	objs/
 SRCS		=	$(addprefix $(SRCS_DIR), $(addsuffix .cpp, $(FILES)))
