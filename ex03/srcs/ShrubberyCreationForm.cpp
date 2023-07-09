@@ -6,7 +6,7 @@
 /*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 02:05:22 by suchua            #+#    #+#             */
-/*   Updated: 2023/07/09 05:04:26 by suchua           ###   ########.fr       */
+/*   Updated: 2023/07/09 19:25:34 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,15 @@ gradeExec(other.gradeExec)
 {
 }
 
-void	generateShrubberyTree(const char *name)
+void	generateShrubberyTree(std::string name)
 {
-	int	lines = 20;
-	std::ofstream file(strcat((char *) name, "_shrubbery"));
+	int			lines	= 20;
+	const char	*suffix	= "_shrubbery";
+	char		*filename = new char[name.length() + strlen(suffix) + 1];
+	strcpy(filename, name.c_str());
+	strcat(filename, suffix);
+	std::ofstream file(filename);
+
 	if (!file.is_open())
 	{
 		std::cerr << "Unable to open the file\n";
@@ -73,6 +78,7 @@ void	generateShrubberyTree(const char *name)
 		}
 		file << std::endl;
 	}
+	delete[] filename;
 	file.close();
 }
 
@@ -82,5 +88,10 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 		throw FormNotSignedException();
 	if (executor.getGrade() > getGradeExec())
 		throw GradeTooLowException();
-	generateShrubberyTree(getName().c_str());
+	generateShrubberyTree(getName());
+}
+
+AForm*	ShrubberyCreationForm::clone(const std::string& name)
+{
+	return new ShrubberyCreationForm(name);
 }

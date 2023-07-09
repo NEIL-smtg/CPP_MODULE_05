@@ -6,7 +6,7 @@
 /*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 02:14:12 by suchua            #+#    #+#             */
-/*   Updated: 2023/07/09 05:04:04 by suchua           ###   ########.fr       */
+/*   Updated: 2023/07/09 18:51:17 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ class PresidentialPardonForm : public virtual AForm
 		PresidentialPardonForm(std::string name);
 		PresidentialPardonForm& operator=(PresidentialPardonForm& other);
 		PresidentialPardonForm(const PresidentialPardonForm& other);
-		~PresidentialPardonForm();
+		virtual ~PresidentialPardonForm();
 		virtual void		execute(Bureaucrat const& executor) const;
+		virtual AForm*		clone(const std::string& name);
 };
 
 #endif

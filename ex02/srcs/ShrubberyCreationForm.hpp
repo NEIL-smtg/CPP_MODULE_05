@@ -3,32 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/17 18:56:34 by suchua            #+#    #+#             */
-/*   Updated: 2023/05/17 19:34:55 by suchua           ###   ########.fr       */
+/*   Created: 2023/07/09 02:07:32 by suchua            #+#    #+#             */
+/*   Updated: 2023/07/09 05:04:12 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBERRY_CREATION_FORM_HPP
-# define SHRUBERRY_CREATION_FORM_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
 # include "AForm.hpp"
 
-class ShrubberyCreationForm : AForm
+class ShrubberyCreationForm : public virtual AForm
 {
-	public:
-		ShrubberyCreationForm();
-		ShrubberyCreationForm(std::string& target);
-		virtual ~ShrubberyCreationForm();
-		ShrubberyCreationForm(const ShrubberyCreationForm& other);
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
-
-		//getter
-		std::string	getTarget();
 	private:
-		const std::string	target;
-		
+		const std::string name;
+		const int	gradeReq;
+		const int	gradeExec;
+	public:
+		ShrubberyCreationForm(std::string name);
+		ShrubberyCreationForm& operator=(ShrubberyCreationForm& other);
+		ShrubberyCreationForm(const ShrubberyCreationForm& other);
+		~ShrubberyCreationForm();
+		virtual void		execute(Bureaucrat const& executor) const;
 };
 
+void	generateShrubberyTree(const char *name);
 #endif

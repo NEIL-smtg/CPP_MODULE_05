@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/09 02:13:26 by suchua            #+#    #+#             */
-/*   Updated: 2023/07/09 05:04:08 by suchua           ###   ########.fr       */
+/*   Created: 2023/07/09 05:08:37 by suchua            #+#    #+#             */
+/*   Updated: 2023/07/09 18:56:14 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 # include "AForm.hpp"
+# include "PresidentialPardonForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "ShrubberyCreationForm.hpp"
 
-class RobotomyRequestForm : public virtual AForm
+class Intern
 {
 	private:
-		const std::string name;
-		const int	gradeReq;
-		const int	gradeExec;
+		AForm *forms[3];
 	public:
-		RobotomyRequestForm(std::string name);
-		RobotomyRequestForm& operator=(RobotomyRequestForm& other);
-		RobotomyRequestForm(const RobotomyRequestForm& other);
-		~RobotomyRequestForm();
-		virtual void		execute(Bureaucrat const& executor) const;
+		Intern();
+		~Intern();
+		Intern& operator=(Intern& other);
+		Intern(const Intern& other);
+		AForm* makeForm(const std::string& req, const std::string& name);
 
+		class FormNotFoundException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 };
-
 #endif

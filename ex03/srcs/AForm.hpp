@@ -29,13 +29,14 @@ class AForm
 		AForm(std::string name, int gradeReq, int gradeExex);
 		AForm(const AForm& other);
 		AForm& operator=(const AForm& other);
-		~AForm();
+		virtual ~AForm();
 		std::string getName() const;
 		bool		getSigned() const;
 		int			getGradeRequired() const;
 		int			getGradeExec() const;
 		void		beSigned(Bureaucrat& b);
 		virtual void		execute(Bureaucrat const& executor) const=0;
+		virtual AForm*		clone(const std::string& name)=0;
 
 		class GradeTooHighException : public std::exception
 		{

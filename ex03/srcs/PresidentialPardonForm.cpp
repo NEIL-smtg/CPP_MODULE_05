@@ -6,7 +6,7 @@
 /*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 03:06:34 by suchua            #+#    #+#             */
-/*   Updated: 2023/07/09 05:04:36 by suchua           ###   ########.fr       */
+/*   Updated: 2023/07/09 19:10:59 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	pardoned_msg(std::string name)
 {
 	std::cout << "####### PARDON ALERT #######\n";
 	std::cout << "Form " << name;
-	std::cout << " has been n pardoned by Zaphod Beeblebrox\n";
+	std::cout << " has been pardoned by Zaphod Beeblebrox\n";
 	std::cout << "####### END #######\n";
 }
 
@@ -52,4 +52,9 @@ void	PresidentialPardonForm::execute(Bureaucrat const& executor) const
 	if (executor.getGrade() > getGradeExec())
 		throw GradeTooLowException();
 	pardoned_msg(getName());
+}
+
+AForm*	PresidentialPardonForm::clone(const std::string& name)
+{
+	return new PresidentialPardonForm(name);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 19:35:00 by suchua            #+#    #+#             */
-/*   Updated: 2023/05/16 00:33:47 by suchua           ###   ########.fr       */
+/*   Created: 2023/07/09 00:37:46 by suchua            #+#    #+#             */
+/*   Updated: 2023/07/09 01:06:55 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,38 +23,35 @@ class Bureaucrat
 		const std::string	name;
 		int					grade;
 	public:
+		Bureaucrat(std::string name, int grade);
 		Bureaucrat();
-		Bureaucrat(const std::string& newName, int grade);
-		~Bureaucrat();
 		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat& operator=(const Bureaucrat& other);
-
-		//exception
-		class	GradeTooHighException : public std::exception{
+		~Bureaucrat();
+		std::string getName();
+		int			getGrade();
+		void		upGrade();
+		void		downGrade();
+		
+		class GradeTooHighException : public std::exception
+		{
 			public:
 				const char* what() const throw()
 				{
-					return "Grade too high.\nUsage : grade should be between 1 - 150";
+					return "Grade too high !!\nUsage (1 - 150).\n";
 				}
 		};
 
-		class	GradeTooLowException : public std::exception{
+		class GradeTooLowException : public std::exception
+		{
 			public:
 				const char* what() const throw()
 				{
-					return "Grade too low.\nUsage : grade should be between 1 - 150";
+					return "Grade too low !!\nUsage (1 - 150).\n";
 				}
 		};
-
-		//getters
-		const std::string	getName();
-		int					getGrade();
-
-		//increment, decrement of grade
-		void				gradeIncrease();
-		void				gradeDecrease();
 };
 
-std::ostream&	operator<<(std::ostream& stream, Bureaucrat& b);
+std::ostream& operator<<(std::ostream& out, Bureaucrat& b);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 00:24:07 by suchua            #+#    #+#             */
-/*   Updated: 2023/05/17 13:41:46 by suchua           ###   ########.fr       */
+/*   Created: 2023/07/09 01:17:28 by suchua            #+#    #+#             */
+/*   Updated: 2023/07/09 01:54:02 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,27 @@ class Form
 {
 	private:
 		const std::string	name;
-		bool				sign;
-		const int			gradeSign;
+		bool				_signed;
+		const int			gradeRequired;
 		const int			gradeExec;
 	public:
 		Form();
-		Form(std::string newName, int newGrdSign, int newGrdExec);
-		~Form();
+		Form(std::string name, int gradeReq, int gradeExex);
 		Form(const Form& other);
-		Form&	operator=(const Form& other);
+		Form& operator=(const Form& other);
+		~Form();
+		std::string getName();
+		bool		getSigned();
+		int			getGradeRequired();
+		int			getGradeExec();
+		void		beSigned(Bureaucrat b);
 
-		//exception
-		class	GradeTooHighException : public std::exception
+		class GradeTooHighException : public std::exception
 		{
-			public:
+			public :
 				const char* what() const throw()
 				{
-					return "Grade too high.";
+					return "Form Grade Too High\n";
 				}
 		};
 
@@ -44,20 +48,11 @@ class Form
 			public:
 				const char* what() const throw()
 				{
-					return "Grade too low.";
+					return "Form Grade Too Low\n";
 				}
 		};
-
-		//getters
-		const std::string	getName();
-		bool				getSign();
-		int					getGradeSign();
-		int					getGradeExec();
-
-		//member functions
-		void	beSigned(Bureaucrat& b);
 };
 
-std::ostream&	operator<<(std::ostream& out, Form& form);
+std::ostream& operator<<(std::ostream& out, Form& f);
 
-#endif
+# endif

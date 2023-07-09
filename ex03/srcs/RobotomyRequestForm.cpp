@@ -6,7 +6,7 @@
 /*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 03:01:37 by suchua            #+#    #+#             */
-/*   Updated: 2023/07/09 05:04:47 by suchua           ###   ########.fr       */
+/*   Updated: 2023/07/09 18:59:42 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,9 @@ void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
 	if (executor.getGrade() > getGradeExec())
 		throw GradeTooLowException();
 	generate_noise(getName());
+}
+
+AForm*	RobotomyRequestForm::clone(const std::string& name)
+{
+	return new RobotomyRequestForm(name);
 }

@@ -1,6 +1,6 @@
 NAME		=	form
 FILES		=	main Bureaucrat ShrubberyCreationForm AForm \
-				PresidentialPardonForm RobotomyRequestForm
+				PresidentialPardonForm RobotomyRequestForm Intern
 SRCS_DIR	=	srcs/
 OBJS_DIR	=	objs/
 SRCS		=	$(addprefix $(SRCS_DIR), $(addsuffix .cpp, $(FILES)))
@@ -18,7 +18,7 @@ $(OBJS_DIR)%.o:$(SRCS_DIR)%.cpp
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CPP) $(CFLAGS) -fsanitize=address -g3 -o $(NAME) $(OBJS)
+	$(CPP) $(CFLAGS) -fsanitize=address -g3 -o $(NAME) $(SRCS)
 
 clean:
 	$(RM) $(OBJS_DIR)
@@ -27,3 +27,6 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+leaks:
+	valgrind --leak-check=full ./$(NAME)
