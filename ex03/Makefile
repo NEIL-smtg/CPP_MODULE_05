@@ -18,7 +18,7 @@ $(OBJS_DIR)%.o:$(SRCS_DIR)%.cpp
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CPP) $(CFLAGS) -fsanitize=address -g3 -o $(NAME) $(SRCS)
+	$(CPP) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(OBJS_DIR)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 02:05:22 by suchua            #+#    #+#             */
-/*   Updated: 2023/07/09 05:04:26 by suchua           ###   ########.fr       */
+/*   Updated: 2023/08/29 18:01:52 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ gradeExec(other.gradeExec)
 {
 }
 
-void	generateShrubberyTree(const char *name)
+void	generateShrubberyTree(char *name)
 {
 	int	lines = 20;
-	std::ofstream file(strcat((char *) name, "_shrubbery"));
+	std::ofstream file(strcat(name, "_shrubbery"));
 	if (!file.is_open())
 	{
 		std::cerr << "Unable to open the file\n";
@@ -82,5 +82,5 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 		throw FormNotSignedException();
 	if (executor.getGrade() > getGradeExec())
 		throw GradeTooLowException();
-	generateShrubberyTree(getName().c_str());
+	generateShrubberyTree(const_cast<char *>(getName().c_str()));
 }

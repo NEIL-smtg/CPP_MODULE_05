@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 00:43:30 by suchua            #+#    #+#             */
-/*   Updated: 2023/07/09 04:54:11 by suchua           ###   ########.fr       */
+/*   Updated: 2023/08/29 17:11:36 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ std::ostream& operator<<(std::ostream& out, Bureaucrat& b)
 }
 
 void	Bureaucrat::signForm(AForm& form)
-{
+{	
 	if (form.getSigned())
 		std::cout << this->name << " signed form\n";
 	else

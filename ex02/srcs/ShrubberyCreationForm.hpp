@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 02:07:32 by suchua            #+#    #+#             */
-/*   Updated: 2023/07/09 05:04:12 by suchua           ###   ########.fr       */
+/*   Updated: 2023/08/29 18:00:34 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ class ShrubberyCreationForm : public virtual AForm
 		virtual void		execute(Bureaucrat const& executor) const;
 };
 
-void	generateShrubberyTree(const char *name);
+void	generateShrubberyTree(char *name);
 #endif

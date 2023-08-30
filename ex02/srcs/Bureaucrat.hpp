@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 00:37:46 by suchua            #+#    #+#             */
-/*   Updated: 2023/07/09 04:55:11 by suchua           ###   ########.fr       */
+/*   Updated: 2023/08/29 17:02:47 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 
 class AForm;
 
+
+// class Exception
+// {
+	
+// }
 class Bureaucrat
 {
 	private:

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suchua < suchua@student.42kl.edu.my>       +#+  +:+       +#+        */
+/*   By: suchua <suchua@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 01:08:11 by suchua            #+#    #+#             */
-/*   Updated: 2023/07/09 05:05:36 by suchua           ###   ########.fr       */
+/*   Updated: 2023/08/30 16:38:03 by suchua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int main(void)
 		myTree.execute(human);
 		robotomy.execute(human);
 		pardon.execute(human);
+		human.executeForm(myTree);
 	}
 	catch (std::exception & e)
 	{
